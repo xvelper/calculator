@@ -1,64 +1,192 @@
-$(document).ready(function(){
+$(document).ready(function() {
+
 
 let calculator = {
-	numberA: null,
-	func: null,
-	numberB: null,
+	A: "",
+	B: "",
+	func: "",
 	output: null,
 	enter: null
 }
-
 console.log(calculator);
 
-$("#1").click(function(){
-	console.log(1);
-	if (calculator.numberA === null) {
-		calculator.numberA = 1;
-		calculator.output = 1;
+$("#plus").click(function(){ 
+	if (!(calculator.A === "")) {
+		calculator.func = "+";
+		output(); 
 	}
+});
 
+$("#minus").click(function(){ 
+	if (!(calculator.A === "")) {
+		calculator.func = "-";
+		output(); 
+	}
+});
+
+$("#del").click(function(){ 
+	if (!(calculator.A === "")) {
+		calculator.func = "/";
+		output(); 
+	}
+});
+
+$("#umn").click(function(){ 
+	if (!(calculator.A === "")) {
+		calculator.func = "*";
+		output(); 
+	}
+});
+
+
+
+$("#1").click(function(){ 
+	if (calculator.func === ""){
+		calculator.A += "1";
+	}
 	else {
-		calculator.numberB = 1;
-		calculator.output = 1;
+		calculator.B += "1";
 	}
-
-	output();
+	output(); 
 });
 
-$("#2").click(function(){
-	console.log(2);
-
-	if (calculator.numberA === null) {
-		calculator.numberA = 2;
-		calculator.output = 2;
+$("#2").click(function(){ 
+	if (calculator.func === ""){
+		calculator.A += "2";
 	}
-
 	else {
-		calculator.numberB = 2;
-		calculator.output = 2;
+		calculator.B += "2";
+	}
+	output(); 
+});
+
+$("#3").click(function(){ 
+	if (calculator.func === ""){
+		calculator.A += "3";
+	}
+	else {
+		calculator.B += "3";
+	}
+	output(); 
+});
+
+$("#4").click(function(){ 
+	if (calculator.func === ""){
+		calculator.A += "4";
+	}
+	else {
+		calculator.B += "4";
+	}
+	output(); 
+});
+
+$("#5").click(function(){ 
+	if (calculator.func === ""){
+		calculator.A += "5";
+	}
+	else {
+		calculator.B += "5";
+	}
+	output(); 
+});
+
+$("#6").click(function(){ 
+	if (calculator.func === ""){
+		calculator.A += "6";
+	}
+	else {
+		calculator.B += "6";
+	}
+	output(); 
+});
+
+$("#7").click(function(){ 
+	if (calculator.func === ""){
+		calculator.A += "7";
+	}
+	else {
+		calculator.B += "7";
+	}
+	output(); 
+});
+
+$("#8").click(function(){ 
+	if (calculator.func === ""){
+		calculator.A += "8";
+	}
+	else {
+		calculator.B += "8";
+	}
+	output(); 
+});
+
+$("#9").click(function(){ 
+	if (calculator.func === ""){
+		calculator.A += "9";
+	}
+	else {
+		calculator.B += "9";
+	}
+	output(); 
+});
+
+$("#0").click(function(){ 
+	if (!(calculator.A === "")) { 
+		if (calculator.func === ""){
+			calculator.A += "0";
+			output(); 
+		}
+		else {
+			if (!(calculator.B === "")){
+				calculator.B += "0";
+				output(); 
+			}
+		}
+		
+	}
+});
+
+$("#enter").click(function(){ 
+	calculator.enter = "enter";
+	output(); 
+});
+
+function output() { 
+	if (calculator.enter === null) { 
+		$("#output").text(calculator.A + calculator.func + calculator.B);
+
 	}
 
-	output();
-});
-
-$("#plus").click(function(){
-	calculator.func = 'plus';
-	console.log('plus');
-});
-
-$("#enter").click(function(){
-	console.log('enter');
-
-	if (calculator.func === 'plus') {
-		calculator.enter = calculator.numberA + calculator.numberB;
-		calculator.output = calculator.enter;
+	else if ((calculator.A === "") || (calculator.B === "") || (calculator.func === "")) {
+		$("#output").text("Error"); 
+		calculator.enter = null; 
+		calculator.A = "";
+		calculator.B = "";
+		calculator.func = "";
 	}
 
-	output();
-});
+	else {  
 
-function output() {
-	$("#output").text(calculator.output);
-}
+		if (calculator.func === "+") {
+			$("#output").text(String( Number(calculator.A) + Number(calculator.B)));
+		}
 
-});
+		else if (calculator.func === "-") {
+			$("#output").text(String( Number(calculator.A) - Number(calculator.B)));
+		}
+
+		else if (calculator.func === "/") {
+			$("#output").text(String( Number(calculator.A) / Number(calculator.B)));
+		}
+
+		else {
+			$("#output").text(String( Number(calculator.A) * Number(calculator.B)));
+		}
+		
+		calculator.enter = null; 
+		calculator.A = "";
+		calculator.B = "";
+		calculator.func = "";
+	}
+	
+}});
