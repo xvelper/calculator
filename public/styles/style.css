@@ -45,7 +45,7 @@ td {
 .Calculator__enter {
 	background-color: #ff6a00bb;
 	color: black;
-	border-radius: 0 0 12px 12px;
+	border-radius: 0 0 0 12px;
 	cursor: pointer;
 	transition: opacity ease .25s;
 }
@@ -54,3 +54,14 @@ td {
 	opacity: .75;
 }
 
+.Calculator__clear {
+	background-color: #3ddbffbb;
+	color: black;
+	border-radius: 0 0 12px 0;
+	cursor: pointer;
+	transition: opacity ease .25s;
+}
+
+.Calculator__clear:hover {
+	opacity: .75;
+}

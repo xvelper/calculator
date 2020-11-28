@@ -1,192 +1,219 @@
 $(document).ready(function() {
 
-
 let calculator = {
-	A: "",
-	B: "",
-	func: "",
-	output: null,
+	numberA: null,
+	func: null,
+	numberB: null,
+	output: 0,
 	enter: null
 }
+
 console.log(calculator);
+output();
 
-$("#plus").click(function(){ 
-	if (!(calculator.A === "")) {
-		calculator.func = "+";
-		output(); 
-	}
+$("#1").click(function(){
+	console.log(1);
+	number(1);
+
+	output();
 });
 
-$("#minus").click(function(){ 
-	if (!(calculator.A === "")) {
-		calculator.func = "-";
-		output(); 
-	}
+$("#2").click(function(){
+	console.log(2);
+
+	number(2);
+
+	output();
 });
 
-$("#del").click(function(){ 
-	if (!(calculator.A === "")) {
-		calculator.func = "/";
-		output(); 
-	}
+$("#3").click(function(){
+	console.log(3);
+
+	number(3);
+
+	output();
 });
 
-$("#umn").click(function(){ 
-	if (!(calculator.A === "")) {
-		calculator.func = "*";
-		output(); 
-	}
+$("#4").click(function(){
+	console.log(4);
+
+	number(4);
+
+	output();
+});
+$("#5").click(function(){
+	console.log(5);
+
+	number(5);
+
+	output();
 });
 
+$("#6").click(function(){
+	console.log(6);
 
+	number(6);
 
-$("#1").click(function(){ 
-	if (calculator.func === ""){
-		calculator.A += "1";
-	}
-	else {
-		calculator.B += "1";
-	}
-	output(); 
+	output();
 });
 
-$("#2").click(function(){ 
-	if (calculator.func === ""){
-		calculator.A += "2";
-	}
-	else {
-		calculator.B += "2";
-	}
-	output(); 
+$("#7").click(function(){
+	console.log(7);
+
+	number(8);
+
+	output();
+});
+$("#8").click(function(){
+	console.log(8);
+
+	number(8);
+
+	output();
 });
 
-$("#3").click(function(){ 
-	if (calculator.func === ""){
-		calculator.A += "3";
-	}
-	else {
-		calculator.B += "3";
-	}
-	output(); 
+$("#9").click(function(){
+	console.log(9);
+
+	number(9);
+
+	output();
 });
 
-$("#4").click(function(){ 
-	if (calculator.func === ""){
-		calculator.A += "4";
-	}
-	else {
-		calculator.B += "4";
-	}
-	output(); 
+$("#0").click(function(){
+	console.log(0);
+
+	number(0);
+
+	output();
 });
 
-$("#5").click(function(){ 
-	if (calculator.func === ""){
-		calculator.A += "5";
-	}
-	else {
-		calculator.B += "5";
-	}
-	output(); 
+$("#plus").click(function(){
+	calculator.func = 'plus';
+	console.log('plus');
 });
 
-$("#6").click(function(){ 
-	if (calculator.func === ""){
-		calculator.A += "6";
-	}
-	else {
-		calculator.B += "6";
-	}
-	output(); 
+$("#min").click(function(){
+	calculator.func = 'min';
+	console.log('min');
 });
 
-$("#7").click(function(){ 
-	if (calculator.func === ""){
-		calculator.A += "7";
-	}
-	else {
-		calculator.B += "7";
-	}
-	output(); 
+$("#del").click(function(){
+	calculator.func = 'del';
+	console.log('del');
 });
 
-$("#8").click(function(){ 
-	if (calculator.func === ""){
-		calculator.A += "8";
-	}
-	else {
-		calculator.B += "8";
-	}
-	output(); 
+$("#umn").click(function(){
+	calculator.func = 'umn';
+	console.log('umn');
 });
 
-$("#9").click(function(){ 
-	if (calculator.func === ""){
-		calculator.A += "9";
-	}
-	else {
-		calculator.B += "9";
-	}
-	output(); 
-});
+$("#enter").click(function(){
+	console.log('enter');
 
-$("#0").click(function(){ 
-	if (!(calculator.A === "")) { 
-		if (calculator.func === ""){
-			calculator.A += "0";
-			output(); 
-		}
-		else {
-			if (!(calculator.B === "")){
-				calculator.B += "0";
-				output(); 
-			}
-		}
-		
-	}
-});
+	if (calculator.enter) {
 
-$("#enter").click(function(){ 
-	calculator.enter = "enter";
-	output(); 
-});
-
-function output() { 
-	if (calculator.enter === null) { 
-		$("#output").text(calculator.A + calculator.func + calculator.B);
-
-	}
-
-	else if ((calculator.A === "") || (calculator.B === "") || (calculator.func === "")) {
-		$("#output").text("Error"); 
-		calculator.enter = null; 
-		calculator.A = "";
-		calculator.B = "";
-		calculator.func = "";
-	}
-
-	else {  
-
-		if (calculator.func === "+") {
-			$("#output").text(String( Number(calculator.A) + Number(calculator.B)));
+		if (calculator.func === 'umn') {
+			calculator.enter = calculator.enter * calculator.numberB;
+			calculator.output = calculator.enter;
 		}
 
-		else if (calculator.func === "-") {
-			$("#output").text(String( Number(calculator.A) - Number(calculator.B)));
+		else if (calculator.func === 'del') {
+			calculator.enter = calculator.enter / calculator.numberB;
+			calculator.output = calculator.enter;
 		}
 
-		else if (calculator.func === "/") {
-			$("#output").text(String( Number(calculator.A) / Number(calculator.B)));
+		else if (calculator.func === 'min') {
+			calculator.enter = calculator.enter - calculator.numberB;
+			calculator.output = calculator.enter;
 		}
 
-		else {
-			$("#output").text(String( Number(calculator.A) * Number(calculator.B)));
+		else if (calculator.func === 'plus') {
+			calculator.enter = calculator.enter + calculator.numberB;
+			calculator.output = calculator.enter;
 		}
-		
-		calculator.enter = null; 
-		calculator.A = "";
-		calculator.B = "";
-		calculator.func = "";
+	}
+
+	else {
+
+		if (calculator.func === 'umn') {
+			calculator.enter = calculator.numberA * calculator.numberB;
+			calculator.output = calculator.enter;
+		}
+
+		else if (calculator.func === 'del') {
+			calculator.enter = calculator.numberA / calculator.numberB;
+			calculator.output = calculator.enter;
+		}
+
+		else if (calculator.func === 'min') {
+			calculator.enter = calculator.numberA - calculator.numberB;
+			calculator.output = calculator.enter;
+		}
+
+		else if (calculator.func === 'plus') {
+			calculator.enter = calculator.numberA + calculator.numberB;
+			calculator.output = calculator.enter;
+		}
+	}
+
+	output();
+});
+
+
+$("#clear").click(function(){
+	console.log('clear');
+
+	calculator.numberA = null;
+	calculator.numberB = null;
+	calculator.output = 0;
+	calculator.func = null;
+	calculator.enter = null;
+
+	output();
+});
+
+function number(number) {
+
+	if (calculator.enter) {
+		calculator.enter = null;
+		calculator.numberA = number;
+		calculator.output = calculator.numberA;
 	}
 	
-}});
+	else {
+		if (calculator.func === null) {
+			if (calculator.numberA === null) {
+				calculator.numberA = number;
+				calculator.output = calculator.numberA;
+			}
+
+			else {
+
+				calculator.numberA = Number(String(calculator.numberA) + String(number));
+				calculator.output = calculator.numberA;
+				}
+			}
+
+			else {
+									
+			if (calculator.numberB === null) {
+			calculator.numberB = number;
+			calculator.output = calculator.numberB;
+			}
+
+			else {
+
+				calculator.numberB = Number(String(calculator.numberB) + String(number));
+				calculator.output = calculator.numberB;
+			}
+		}
+	}
+
+}
+
+function output() {
+	$("#output").text(calculator.output);
+}
+
+});
